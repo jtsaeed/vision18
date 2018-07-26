@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evh98.vision.util.Graphics;
 
-public class Card {
+public class Card implements Comparable<Card> {
 
     private final String title;
     private final int fontSize;
@@ -73,5 +73,10 @@ public class Card {
         this.topColor = Palette.grayDark;
         this.bottomColor = Palette.grayLight;
         this.iconColor = Palette.white;
+    }
+
+    @Override
+    public int compareTo(Card other) {
+        return title.compareTo(other.title);
     }
 }
