@@ -1,7 +1,7 @@
-package com.evh98.vision.util;
+package com.evh98.vision.ui.card;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evh98.vision.ui.Card;
+import com.evh98.vision.util.Controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +9,14 @@ import java.util.Collections;
 public class CardsManager {
 
     private ArrayList<Card> cards;
-    int position = 0;
+    private int position = 0;
+
+    public CardsManager(ArrayList<Card> cards) {
+        this.cards = cards;
+        Collections.sort(this.cards);
+
+        this.cards.get(this.position).select();
+    }
 
     public CardsManager(Card...cards) {
         this.cards = new ArrayList<Card>();
@@ -36,8 +43,13 @@ public class CardsManager {
         }
 
         if (Controller.confirm()) {
-
+            open();
         }
+    }
+
+    public void addCard(Card card) {
+        this.cards.add(card);
+        Collections.sort(this.cards);
     }
 
     private void moveToNextCard() {
@@ -54,5 +66,9 @@ public class CardsManager {
             position--;
             this.cards.get(this.position).select();
         }
+    }
+
+    private void open() {
+        this.cards.get(this.position).open();
     }
 }

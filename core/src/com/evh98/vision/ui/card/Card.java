@@ -1,9 +1,11 @@
-package com.evh98.vision.ui;
+package com.evh98.vision.ui.card;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evh98.vision.ui.Icon;
+import com.evh98.vision.ui.Palette;
 import com.evh98.vision.util.Graphics;
 
 public class Card implements Comparable<Card> {
@@ -20,21 +22,25 @@ public class Card implements Comparable<Card> {
     private Color bottomColor;
     private Color iconColor;
 
+    private final CardAction action;
+
     private final int topOffset;
     private final int leftOffset;
     private final int padding;
     private final int cardsInOneView;
 
-    public Card(String title, Icon icon, Color primaryColor, Color secondaryColor) {
+    public Card(String title, Icon icon, Color[] colors, CardAction action) {
         this.title = title;
         this.fontSize = 96;
         this.font = Graphics.createFont(Graphics.systemFont, fontSize, Palette.white);
 
         this.icon = icon.getLarge();
 
-        this.primaryColor = primaryColor;
-        this.secondaryColor = secondaryColor;
+        this.primaryColor = colors[0];
+        this.secondaryColor = colors[1];
         deselect();
+
+        this.action = action;
 
         this.topOffset = 234;
         this.leftOffset = 128;
@@ -73,6 +79,10 @@ public class Card implements Comparable<Card> {
         this.topColor = Palette.grayDark;
         this.bottomColor = Palette.grayLight;
         this.iconColor = Palette.white;
+    }
+
+    public void open() {
+        action.perform();
     }
 
     @Override

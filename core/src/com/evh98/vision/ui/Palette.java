@@ -25,4 +25,31 @@ public class Palette {
     public static Color gray = Color.valueOf("808080");
     public static Color grayLight = Color.valueOf("A6A6A6");
     public static Color white = Color.valueOf("F2F2F2");
+
+    public static Color[] reds = {red, redPastel};
+    public static Color[] blues = {blue, bluePastel};
+    public static Color[] greens = {green, greenPastel};
+    public static Color[] yellows = {yellow, yellowPastel};
+    public static Color[] purples = {purple, purplePastel};
+    public static Color[] pinks = {pink, pinkPastel};
+    public static Color[] grays = {black, grayDark, gray, grayLight, white};
+
+    public static Color[] colorsFromText(String text) {
+        switch (text) {
+            case "red":
+                return reds;
+            case "blue":
+                return blues;
+            case "green":
+                return greens;
+            case "yellow":
+                return yellows;
+            case "purple":
+                return purples;
+            case "pink":
+                return pinks;
+            default:
+                return grays;
+        }
+    }
 }
