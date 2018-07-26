@@ -32,6 +32,10 @@ public class Controller {
         return (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE));
     }
 
+    public static boolean search() {
+        return (Gdx.input.isKeyJustPressed(Input.Keys.TAB));
+    }
+
     public static boolean terminate() {
         return (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE));
     }

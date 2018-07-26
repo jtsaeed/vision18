@@ -20,6 +20,7 @@ public class Graphics {
     public static ArrayList<Sprite> wallpapers;
     public static Sprite cardTopSprite;
     public static Sprite cardBottomSprite;
+    public static Sprite search;
 
     /**
      * Loads everything required by Vision at launch
@@ -48,6 +49,7 @@ public class Graphics {
 
         cardTopSprite = createSprite("ui/card_top.png");
         cardBottomSprite = createSprite("ui/card_bottom.png");
+        search = createSprite("ui/search.png");
 
         Icon.loadAll();
     }

@@ -20,11 +20,13 @@ public class Palette {
     public static Color purplePastel = Color.valueOf("DEDAE6");
     public static Color pinkPastel = Color.valueOf("E6DAE1");
 
+    public static Color blackPure = Color.valueOf("000000");
     public static Color black = Color.valueOf("0D0D0D");
     public static Color grayDark = Color.valueOf("595959");
     public static Color gray = Color.valueOf("808080");
     public static Color grayLight = Color.valueOf("A6A6A6");
     public static Color white = Color.valueOf("F2F2F2");
+    public static Color whitePure = Color.valueOf("FFFFFF");
 
     public static Color[] reds = {red, redPastel};
     public static Color[] blues = {blue, bluePastel};
@@ -32,7 +34,7 @@ public class Palette {
     public static Color[] yellows = {yellow, yellowPastel};
     public static Color[] purples = {purple, purplePastel};
     public static Color[] pinks = {pink, pinkPastel};
-    public static Color[] grays = {black, grayDark, gray, grayLight, white};
+    public static Color[] grays = {blackPure, black, grayDark, gray, grayLight, white, whitePure};
 
     public static Color[] colorsFromText(String text) {
         switch (text) {
