@@ -2,6 +2,7 @@ package com.evh98.vision;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.evh98.vision.net.RemoteServer;
 import com.evh98.vision.screen.HomeScreen;
 import com.evh98.vision.screen.LockScreen;
 import com.evh98.vision.screen.VisionScreen;
@@ -11,21 +12,17 @@ import java.util.Stack;
 
 public class Vision extends Game {
 
-	Stack<VisionScreen> navigationController;
+	private RemoteServer remoteServer;
 
-	LockScreen lockScreen;
+	private Stack<VisionScreen> navigationController;
+	private LockScreen lockScreen;
 	public HomeScreen homeScreen;
 
 	@Override
 	public void create() {
-		initServer();
 		initAssets();
 		initServices();
 		initScreens();
-	}
-
-	private void initServer() {
-
 	}
 
 	private void initAssets() {
@@ -33,7 +30,8 @@ public class Vision extends Game {
 	}
 
 	private void initServices() {
-
+		remoteServer = new RemoteServer();
+		remoteServer.start();
 	}
 
 	private void initScreens() {
@@ -59,6 +57,7 @@ public class Vision extends Game {
 	}
 
 	public void terminate() {
+		remoteServer.interrupt();
 		Gdx.app.exit();
 	}
 }

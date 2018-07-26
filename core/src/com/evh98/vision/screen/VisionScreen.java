@@ -40,6 +40,7 @@ public class VisionScreen implements Screen {
         update();
 
         handleBack();
+        handleTermination();
     }
 
     public void initGL() {
@@ -64,6 +65,12 @@ public class VisionScreen implements Screen {
     private void handleBack() {
         if (Controller.back()) {
             vision.back();
+        }
+    }
+
+    private void handleTermination() {
+        if (Controller.terminate()) {
+            vision.terminate();
         }
     }
 
