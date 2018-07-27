@@ -6,8 +6,11 @@ import com.evh98.vision.net.RemoteServer;
 import com.evh98.vision.screen.HomeScreen;
 import com.evh98.vision.screen.LockScreen;
 import com.evh98.vision.screen.VisionScreen;
+import com.evh98.vision.ui.card.Card;
+import com.evh98.vision.ui.card.HomeCardsLoader;
 import com.evh98.vision.util.Graphics;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class Vision extends Game {
@@ -17,6 +20,7 @@ public class Vision extends Game {
 	private Stack<VisionScreen> navigationController;
 	private LockScreen lockScreen;
 	public HomeScreen homeScreen;
+	public ArrayList<Card> homeCards;
 
 	@Override
 	public void create() {
@@ -30,34 +34,35 @@ public class Vision extends Game {
 	}
 
 	private void initServices() {
-		remoteServer = new RemoteServer();
-		remoteServer.start();
+		this.remoteServer = new RemoteServer();
+		this.remoteServer.start();
 	}
 
 	private void initScreens() {
-		navigationController = new Stack<VisionScreen>();
+		this.navigationController = new Stack<VisionScreen>();
 
-		lockScreen = new LockScreen(this);
-		homeScreen = new HomeScreen(this);
+		this.lockScreen = new LockScreen(this);
+		this.homeScreen = new HomeScreen(this);
+		this.homeCards = HomeCardsLoader.loadCards();
 
-		navigationController.push(lockScreen);
-		navigationController.push(homeScreen);
+		this.navigationController.push(lockScreen);
+		this.navigationController.push(homeScreen);
 
-		setScreen(navigationController.peek());
+		setScreen(this.navigationController.peek());
 	}
 
 	public void back() {
-		navigationController.pop();
-		setScreen(navigationController.peek());
+		this.navigationController.pop();
+		setScreen(this.navigationController.peek());
 	}
 
 	public void goToScreen(VisionScreen screen) {
-		navigationController.push(screen);
-		setScreen(navigationController.peek());
+		this.navigationController.push(screen);
+		setScreen(this.navigationController.peek());
 	}
 
 	public void terminate() {
-		remoteServer.interrupt();
+		this.remoteServer.interrupt();
 		Gdx.app.exit();
 	}
 }

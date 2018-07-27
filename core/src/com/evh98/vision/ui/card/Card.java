@@ -74,6 +74,10 @@ public class Card implements Comparable<Card> {
         this.iconColor = Palette.white;
     }
 
+    public String getTitle() {
+        return this.title;
+    }
+
     public void open() {
         action.perform();
     }

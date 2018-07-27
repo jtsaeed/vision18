@@ -28,7 +28,7 @@ public class VisionScreen implements Screen {
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(true, Util.WIDTH, Util.HEIGHT);
 
-        this.search = new Search();
+        this.search = new Search(vision);
     }
 
     @Override public void show() {

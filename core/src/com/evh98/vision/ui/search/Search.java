@@ -2,6 +2,7 @@ package com.evh98.vision.ui.search;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evh98.vision.Vision;
 import com.evh98.vision.ui.Palette;
 import com.evh98.vision.util.Controller;
 import com.evh98.vision.util.Graphics;
@@ -14,14 +15,18 @@ public class Search {
     private String query;
     private boolean isActive;
 
+    private final SearchEngine searchEngine;
+
     private final int maxCharacters = 32;
     private final int topOffset = 1088;
 
-    public Search() {
+    public Search(Vision vision) {
         this.font = Graphics.createFont(Graphics.systemFont, 96, Palette.whitePure);
 
         this.query = "";
         this.isActive = false;
+
+        this.searchEngine = new SearchEngine(vision);
     }
 
     public void draw(SpriteBatch spriteBatch) {
@@ -46,7 +51,7 @@ public class Search {
         }
 
         if (Controller.textInputConfirm()) {
-
+            searchEngine.search(query);
         }
     }
 
