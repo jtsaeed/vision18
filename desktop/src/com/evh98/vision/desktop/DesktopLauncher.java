@@ -12,6 +12,7 @@ public class DesktopLauncher {
 		config.height = 720;
 		config.fullscreen = false;
 		config.useHDPI = true;
+		config.title = "Vision";
 
 		new LwjglApplication(new Vision(), config);
 	}

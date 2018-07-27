@@ -16,19 +16,19 @@ public class HomeScreen extends VisionScreen {
     public HomeScreen(Vision vision) {
         super(vision);
 
-        cards = new CardsManager(HomeCardsLoader.loadCards());
-        statusBar = new StatusBar(Palette.grayDark);
+        this.cards = new CardsManager(HomeCardsLoader.loadCards());
+        this.statusBar = new StatusBar(Palette.grayDark);
     }
 
     @Override
     public void draw(float delta) {
-        cards.draw(spriteBatch);
-        statusBar.draw(spriteBatch);
+        this.cards.draw(spriteBatch);
+        this.statusBar.draw(spriteBatch);
     }
 
     @Override
     public void update() {
-        cards.update();
-        statusBar.update();
+        this.cards.update();
+        this.statusBar.update();
     }
 }

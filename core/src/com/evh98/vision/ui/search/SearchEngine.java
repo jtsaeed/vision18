@@ -4,6 +4,8 @@ import com.evh98.vision.Vision;
 import com.evh98.vision.ui.card.Card;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+
 public class SearchEngine {
 
     private final Vision vision;
@@ -14,12 +16,16 @@ public class SearchEngine {
         this.vision = vision;
     }
 
-    public void search(String query) {
+    public ArrayList<Card> getResults(String query) {
+        ArrayList<Card> results = new ArrayList<Card>();
+
         for (Card card : vision.homeCards) {
             if (similarity(query, card.getTitle()) > similarityThreshold) {
-                card.open();
+                results.add(card);
             }
         }
+
+        return results;
     }
 
     public double similarity(String s1, String s2) {

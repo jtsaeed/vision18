@@ -4,9 +4,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evh98.vision.Vision;
 import com.evh98.vision.ui.Palette;
+import com.evh98.vision.ui.card.Card;
+import com.evh98.vision.ui.card.CardsManager;
 import com.evh98.vision.util.Controller;
 import com.evh98.vision.util.Graphics;
 import com.evh98.vision.util.Util;
+
+import java.util.ArrayList;
 
 public class Search {
 
@@ -14,8 +18,10 @@ public class Search {
 
     private String query;
     private boolean isActive;
+    private boolean displayResults;
 
     private final SearchEngine searchEngine;
+    private CardsManager results;
 
     private final int maxCharacters = 32;
     private final int topOffset = 1088;
@@ -25,11 +31,16 @@ public class Search {
 
         this.query = "";
         this.isActive = false;
+        this.displayResults = false;
 
         this.searchEngine = new SearchEngine(vision);
     }
 
     public void draw(SpriteBatch spriteBatch) {
+        if (displayResults) {
+            this.results.draw(spriteBatch);
+        }
+
         spriteBatch.begin();
             spriteBatch.draw(Graphics.search, (Util.WIDTH - Graphics.search.getWidth()) / 2, topOffset);
             Graphics.drawText(spriteBatch, font, query,
@@ -38,7 +49,20 @@ public class Search {
     }
 
     public void update() {
-        handleQueryInput();
+        if (displayResults) {
+            this.results.update();
+
+            if (Controller.confirm()) {
+                toggle();
+            }
+
+            if (Controller.back()) {
+                this.displayResults = false;
+                this.query = "";
+            }
+        } else {
+            handleQueryInput();
+        }
     }
 
     private void handleQueryInput() {
@@ -51,12 +75,25 @@ public class Search {
         }
 
         if (Controller.textInputConfirm()) {
-            searchEngine.search(query);
+            search(query);
+        }
+    }
+
+    private void search(String query) {
+        this.displayResults = true;
+
+        ArrayList<Card> results = this.searchEngine.getResults(query);
+
+        if (results.size() > 0) {
+            this.results = new CardsManager(results);
+        } else {
+            // TODO: No results
         }
     }
 
     public void toggle() {
         this.isActive = !this.isActive;
+        this.displayResults = false;
         this.query = "";
     }
 
