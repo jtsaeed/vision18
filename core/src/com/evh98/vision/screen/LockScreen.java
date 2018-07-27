@@ -1,23 +1,28 @@
 package com.evh98.vision.screen;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.evh98.vision.Vision;
 import com.evh98.vision.ui.Palette;
 import com.evh98.vision.ui.StatusBar;
 import com.evh98.vision.util.Controller;
 import com.evh98.vision.util.Graphics;
 
+import java.util.Random;
+
 public class LockScreen extends VisionScreen {
 
     private StatusBar statusBar;
+    private Sprite screensaver;
 
     public LockScreen(Vision vision) {
         super(vision);
 
-        statusBar = new StatusBar(Palette.white);
+        this.statusBar = new StatusBar(Palette.white);
+        chooseRandomScreensaver();
     }
 
     @Override public void show() {
-
+        chooseRandomScreensaver();
     }
 
     @Override
@@ -34,8 +39,12 @@ public class LockScreen extends VisionScreen {
 
     private void drawScreensaver() {
         spriteBatch.begin();
-            spriteBatch.draw(Graphics.wallpapers.get(0), 0, 0);
+            spriteBatch.draw(this.screensaver, 0, 0);
         spriteBatch.end();
+    }
+
+    private void chooseRandomScreensaver() {
+        this.screensaver = Graphics.screensavers.get(new Random().nextInt(Graphics.screensavers.size()));
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Graphics {
 
     private static GlyphLayout glyphLayout;
 
-    public static ArrayList<Sprite> wallpapers;
+    public static ArrayList<Sprite> screensavers;
     public static Sprite cardTopSprite;
     public static Sprite cardBottomSprite;
     public static Sprite search;
@@ -44,8 +44,9 @@ public class Graphics {
      * Internal sprites loading method
      */
     private static void loadSprites() {
-        wallpapers = new ArrayList<Sprite>();
-        wallpapers.add(createSprite("screensavers/1.png"));
+        screensavers = new ArrayList<Sprite>();
+        screensavers.add(createSprite("screensavers/1.png"));
+        screensavers.add(createSprite("screensavers/2.png"));
 
         cardTopSprite = createSprite("ui/card_top.png");
         cardBottomSprite = createSprite("ui/card_bottom.png");
