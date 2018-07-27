@@ -74,4 +74,75 @@ public class Controller {
             e.printStackTrace();
         }
     }
+
+    /*
+     * Checks what letter character is entered
+     */
+    public static String textInput() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.A)) {
+            return "a";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+            return "b";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
+            return "c";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.D)) {
+            return "d";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {
+            return "e";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+            return "f";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.G)) {
+            return "g";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.H)) {
+            return "h";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.I)) {
+            return "i";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.J)) {
+            return "j";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.K)) {
+            return "k";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
+            return "l";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            return "m";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.N)) {
+            return "n";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.O)) {
+            return "o";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+            return "p";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+            return "q";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
+            return "r";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+            return "s";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+            return "t";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.U)) {
+            return "u";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
+            return "v";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.W)) {
+            return "w";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
+            return "x";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
+            return "y";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
+            return "z";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            return " ";
+        } else {
+            return "";
+        }
+    }
+
+    public static boolean textInputBackspace() {
+        return Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE);
+    }
+
+    public static boolean textInputConfirm() {
+        return Gdx.input.isKeyJustPressed(Input.Keys.ENTER);
+    }
 }

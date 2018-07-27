@@ -11,7 +11,6 @@ import com.evh98.vision.util.Graphics;
 public class Card implements Comparable<Card> {
 
     private final String title;
-    private final int fontSize;
     private final BitmapFont font;
 
     private final Sprite icon;
@@ -24,15 +23,14 @@ public class Card implements Comparable<Card> {
 
     private final CardAction action;
 
-    private final int topOffset;
-    private final int leftOffset;
-    private final int padding;
-    private final int cardsInOneView;
+    private final int topOffset = 234;
+    private final int leftOffset = 128;
+    private final int padding = 192;
+    private final int cardsInOneView = 3;
 
     public Card(String title, Icon icon, Color[] colors, CardAction action) {
         this.title = title;
-        this.fontSize = 96;
-        this.font = Graphics.createFont(Graphics.systemFont, fontSize, Palette.white);
+        this.font = Graphics.createFont(Graphics.systemFont, 96, Palette.white);
 
         this.icon = icon.getLarge();
 
@@ -41,11 +39,6 @@ public class Card implements Comparable<Card> {
         deselect();
 
         this.action = action;
-
-        this.topOffset = 234;
-        this.leftOffset = 128;
-        this.padding = 192;
-        this.cardsInOneView = 3;
     }
 
     public void draw(SpriteBatch spriteBatch, int index, int position) {

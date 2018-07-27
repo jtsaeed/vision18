@@ -7,16 +7,19 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.evh98.vision.Vision;
+import com.evh98.vision.ui.search.Search;
 import com.evh98.vision.util.Controller;
 import com.evh98.vision.util.Graphics;
 import com.evh98.vision.util.Util;
 
 public class VisionScreen implements Screen {
 
-    protected Vision vision;
-    protected SpriteBatch spriteBatch;
-    protected ShapeRenderer shapeRenderer;
-    protected OrthographicCamera camera;
+    protected final Vision vision;
+    protected final SpriteBatch spriteBatch;
+    protected final ShapeRenderer shapeRenderer;
+    protected final OrthographicCamera camera;
+
+    private final Search search;
 
     public VisionScreen(Vision vision) {
         this.vision = vision;
@@ -24,10 +27,13 @@ public class VisionScreen implements Screen {
         this.shapeRenderer = new ShapeRenderer();
         this.camera = new OrthographicCamera();
         this.camera.setToOrtho(true, Util.WIDTH, Util.HEIGHT);
+
+        this.search = new Search();
     }
 
     @Override public void show() {
         Graphics.particles.start();
+        onAppear();
     }
 
     @Override
@@ -36,11 +42,20 @@ public class VisionScreen implements Screen {
         syncCamera();
         drawParticles(delta);
 
-        draw(delta);
-        update();
+        if (Controller.search()) {
+            search.toggle();
+        }
 
-        handleBack();
-        handleTermination();
+        if (search.isActive()) {
+            search.draw(spriteBatch);
+            search.update();
+        } else {
+            draw(delta);
+            update();
+
+            handleBack();
+            handleTermination();
+        }
     }
 
     public void initGL() {
@@ -72,6 +87,10 @@ public class VisionScreen implements Screen {
         if (Controller.terminate()) {
             vision.terminate();
         }
+    }
+
+    public void onAppear() {
+
     }
 
     public void draw(float delta) {
