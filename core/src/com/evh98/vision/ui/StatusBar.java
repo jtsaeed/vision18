@@ -36,6 +36,9 @@ public class StatusBar {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mma");
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM");
         this.time = sdf.format(cal.getTime()).toLowerCase();
+        if (this.time.toCharArray()[0] == '0') {
+            this.time = this.time.substring(1, this.time.length());
+        }
         this.date = sdf2.format(cal.getTime());
     }
 }
