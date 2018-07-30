@@ -1,4 +1,4 @@
-package com.evh98.vision.ui;
+package com.evh98.vision.assistant;
 
 public class Assistant {
 

@@ -1,4 +1,4 @@
-package com.evh98.vision.ui;
+package com.evh98.vision.util;
 
 import com.badlogic.gdx.graphics.Color;
 

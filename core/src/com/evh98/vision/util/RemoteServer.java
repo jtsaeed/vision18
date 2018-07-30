@@ -1,4 +1,4 @@
-package com.evh98.vision.net;
+package com.evh98.vision.util;
 
 import com.evh98.vision.util.Controller;
 

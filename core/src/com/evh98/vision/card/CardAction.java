@@ -1,4 +1,4 @@
-package com.evh98.vision.ui.card;
+package com.evh98.vision.card;
 
 import com.evh98.vision.Vision;
 import com.evh98.vision.screen.VisionScreen;

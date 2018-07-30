@@ -1,7 +1,7 @@
-package com.evh98.vision.ui.search;
+package com.evh98.vision.search;
 
 import com.evh98.vision.Vision;
-import com.evh98.vision.ui.card.Card;
+import com.evh98.vision.card.Card;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

@@ -2,13 +2,13 @@ package com.evh98.vision;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.evh98.vision.net.RemoteServer;
+import com.evh98.vision.util.RemoteServer;
 import com.evh98.vision.screen.HomeScreen;
 import com.evh98.vision.screen.LockScreen;
 import com.evh98.vision.screen.TestScreen;
 import com.evh98.vision.screen.VisionScreen;
-import com.evh98.vision.ui.card.Card;
-import com.evh98.vision.ui.card.HomeCardsLoader;
+import com.evh98.vision.card.Card;
+import com.evh98.vision.card.HomeCardsLoader;
 import com.evh98.vision.util.BackgroundService;
 import com.evh98.vision.util.Graphics;
 

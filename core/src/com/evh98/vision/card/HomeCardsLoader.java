@@ -1,7 +1,7 @@
-package com.evh98.vision.ui.card;
+package com.evh98.vision.card;
 
-import com.evh98.vision.ui.Icon;
-import com.evh98.vision.ui.Palette;
+import com.evh98.vision.util.Icon;
+import com.evh98.vision.util.Palette;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -9,9 +9,7 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class HomeCardsLoader {

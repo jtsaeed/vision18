@@ -1,4 +1,4 @@
-package com.evh98.vision.ui.card;
+package com.evh98.vision.card;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evh98.vision.util.Controller;

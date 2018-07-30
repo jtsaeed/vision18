@@ -1,15 +1,13 @@
 package com.evh98.vision.screen;
 
 import com.evh98.vision.Vision;
-import com.evh98.vision.ui.Icon;
-import com.evh98.vision.ui.Palette;
-import com.evh98.vision.ui.StatusBar;
-import com.evh98.vision.ui.card.Card;
-import com.evh98.vision.ui.card.CardAction;
-import com.evh98.vision.ui.card.CardsManager;
-import com.evh98.vision.ui.card.HomeCardsLoader;
-import com.evh98.vision.ui.search.Search;
-import com.evh98.vision.util.Controller;
+import com.evh98.vision.util.Icon;
+import com.evh98.vision.util.Palette;
+import com.evh98.vision.util.StatusBar;
+import com.evh98.vision.card.Card;
+import com.evh98.vision.card.CardAction;
+import com.evh98.vision.card.CardsManager;
+import com.evh98.vision.card.HomeCardsLoader;
 
 public class HomeScreen extends VisionScreen {
 

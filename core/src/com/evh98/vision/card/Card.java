@@ -1,11 +1,11 @@
-package com.evh98.vision.ui.card;
+package com.evh98.vision.card;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evh98.vision.ui.Icon;
-import com.evh98.vision.ui.Palette;
+import com.evh98.vision.util.Icon;
+import com.evh98.vision.util.Palette;
 import com.evh98.vision.util.Graphics;
 
 public class Card implements Comparable<Card> {

@@ -1,11 +1,11 @@
-package com.evh98.vision.ui.search;
+package com.evh98.vision.search;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evh98.vision.Vision;
-import com.evh98.vision.ui.Palette;
-import com.evh98.vision.ui.card.Card;
-import com.evh98.vision.ui.card.CardsManager;
+import com.evh98.vision.util.Palette;
+import com.evh98.vision.card.Card;
+import com.evh98.vision.card.CardsManager;
 import com.evh98.vision.util.Controller;
 import com.evh98.vision.util.Graphics;
 import com.evh98.vision.util.Util;

@@ -2,8 +2,8 @@ package com.evh98.vision.screen;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.evh98.vision.Vision;
-import com.evh98.vision.ui.Palette;
-import com.evh98.vision.ui.StatusBar;
+import com.evh98.vision.util.Palette;
+import com.evh98.vision.util.StatusBar;
 import com.evh98.vision.util.Controller;
 import com.evh98.vision.util.Graphics;
 
