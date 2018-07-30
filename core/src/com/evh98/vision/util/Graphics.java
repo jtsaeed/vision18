@@ -1,6 +1,7 @@
 package com.evh98.vision.util;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
@@ -44,15 +45,22 @@ public class Graphics {
      * Internal sprites loading method
      */
     private static void loadSprites() {
-        screensavers = new ArrayList<Sprite>();
-        screensavers.add(createSprite("screensavers/1.png"));
-        screensavers.add(createSprite("screensavers/2.png"));
+        loadScreensavers();
 
         cardTopSprite = createSprite("ui/card_top.png");
         cardBottomSprite = createSprite("ui/card_bottom.png");
         search = createSprite("ui/search.png");
 
         Icon.loadAll();
+    }
+
+    private static void loadScreensavers() {
+        screensavers = new ArrayList<Sprite>();
+
+        FileHandle rootFolder = Gdx.files.internal("screensavers");
+        for (FileHandle file : rootFolder.list()) {
+            screensavers.add(createSprite(file));
+        }
     }
 
     /**
@@ -83,6 +91,17 @@ public class Graphics {
      */
     public static Sprite createSprite(String path) {
         Texture t = new Texture(Gdx.files.internal(path));
+        t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        Sprite s = new Sprite(t);
+        s.flip(false, true);
+        return s;
+    }
+
+    /**
+     * Creates a sprite with custom properties for Vision
+     */
+    public static Sprite createSprite(FileHandle file) {
+        Texture t = new Texture(file);
         t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         Sprite s = new Sprite(t);
         s.flip(false, true);
