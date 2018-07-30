@@ -59,7 +59,9 @@ public class Graphics {
 
         FileHandle rootFolder = Gdx.files.internal("screensavers");
         for (FileHandle file : rootFolder.list()) {
-            screensavers.add(createSprite(file));
+            if (file.path().contains(".png")) {
+                screensavers.add(createSprite(file));
+            }
         }
     }
 

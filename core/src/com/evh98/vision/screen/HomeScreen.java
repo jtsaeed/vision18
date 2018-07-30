@@ -1,8 +1,11 @@
 package com.evh98.vision.screen;
 
 import com.evh98.vision.Vision;
+import com.evh98.vision.ui.Icon;
 import com.evh98.vision.ui.Palette;
 import com.evh98.vision.ui.StatusBar;
+import com.evh98.vision.ui.card.Card;
+import com.evh98.vision.ui.card.CardAction;
 import com.evh98.vision.ui.card.CardsManager;
 import com.evh98.vision.ui.card.HomeCardsLoader;
 import com.evh98.vision.ui.search.Search;
@@ -17,6 +20,7 @@ public class HomeScreen extends VisionScreen {
         super(vision);
 
         this.cards = new CardsManager(HomeCardsLoader.loadCards());
+        this.cards.addCard(new Card("Email", Icon.browser, Palette.blues, new CardAction("app", vision.testScreen, vision)));
         this.statusBar = new StatusBar(Palette.grayDark);
     }
 

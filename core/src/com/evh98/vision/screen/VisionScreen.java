@@ -41,6 +41,8 @@ public class VisionScreen implements Screen {
         initGL();
         syncCamera();
         drawParticles(delta);
+        updateBackgroundServices();
+
 
         if (Controller.search()) {
             search.toggle();
@@ -75,6 +77,10 @@ public class VisionScreen implements Screen {
         Graphics.particles.draw(spriteBatch);
         Graphics.particles.update(delta);
         spriteBatch.end();
+    }
+
+    private void updateBackgroundServices() {
+        vision.backgroundService.update();
     }
 
     private void handleBack() {

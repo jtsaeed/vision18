@@ -1,5 +1,8 @@
 package com.evh98.vision.ui.card;
 
+import com.evh98.vision.Vision;
+import com.evh98.vision.screen.VisionScreen;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +12,14 @@ import java.net.URISyntaxException;
 public class CardAction {
 
     private final String type;
-    private final String action;
+    private final Object action;
+    private Vision vision;
+
+    public CardAction(String type, Object action, Vision vision) {
+        this.type = type;
+        this.action = action;
+        this.vision = vision;
+    }
 
     public CardAction(String type, String action) {
         this.type = type;
@@ -31,13 +41,14 @@ public class CardAction {
     }
 
     private void app() {
-
+        System.out.println(this.type);
+        vision.setScreen((VisionScreen) this.action);
     }
 
     private void program() {
         try {
             Desktop desktop = Desktop.getDesktop();
-            File file = new File(this.action);
+            File file = new File((String) this.action);
             desktop.open(file);
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,7 +57,7 @@ public class CardAction {
 
     private void web() {
         try {
-            URI uri = new URI(this.action);
+            URI uri = new URI((String) this.action);
             Desktop desktop = Desktop.getDesktop();
             desktop.browse(uri);
         } catch (URISyntaxException e) {
