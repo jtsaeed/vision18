@@ -80,11 +80,10 @@ public class Search {
     }
 
     private void search(String query) {
-        this.displayResults = true;
-
         ArrayList<Card> results = this.searchEngine.getResults(query);
 
         if (results.size() > 0) {
+            this.displayResults = true;
             this.results = new CardsManager(results);
         } else {
             // TODO: No results

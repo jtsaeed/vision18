@@ -31,6 +31,5 @@ public class HomeScreen extends VisionScreen {
     @Override
     public void update() {
         this.cards.update();
-        this.statusBar.update();
     }
 }

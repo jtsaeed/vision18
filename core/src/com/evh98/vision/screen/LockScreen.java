@@ -52,8 +52,6 @@ public class LockScreen extends VisionScreen {
         if (Controller.confirm()) {
             unlock();
         }
-
-        statusBar.update();
     }
 
     private void unlock() {

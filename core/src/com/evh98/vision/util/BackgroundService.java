@@ -15,6 +15,7 @@ public class BackgroundService {
 
     public void start() {
         Timer.schedule(autoLockTask, autoLockTimeout);
+        Timer.schedule(updateTimeAndDateTask, 0, 1);
     }
 
     public void update() {
@@ -28,6 +29,13 @@ public class BackgroundService {
         @Override
         public void run() {
             vision.lock();
+        }
+    };
+
+    private Timer.Task updateTimeAndDateTask = new Timer.Task() {
+        @Override
+        public void run() {
+            Util.updateTimeAndDate();
         }
     };
 }
