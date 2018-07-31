@@ -23,6 +23,7 @@ public class LockScreen extends VisionScreen {
 
     @Override public void show() {
         chooseRandomScreensaver();
+        vision.notificationService.start();
     }
 
     @Override
@@ -55,6 +56,7 @@ public class LockScreen extends VisionScreen {
     }
 
     private void unlock() {
+        vision.notificationService.stop();
         vision.goToScreen(vision.homeScreen);
     }
 }

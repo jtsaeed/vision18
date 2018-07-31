@@ -3,6 +3,7 @@ package com.evh98.vision;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.evh98.vision.card.CardsManager;
+import com.evh98.vision.notification.NotificationService;
 import com.evh98.vision.util.RemoteServer;
 import com.evh98.vision.screen.HomeScreen;
 import com.evh98.vision.screen.LockScreen;
@@ -19,6 +20,7 @@ public class Vision extends Game {
 	public CardsManager cards;
 
 	public BackgroundService backgroundService;
+	public NotificationService notificationService;
 	private RemoteServer remoteServer;
 
 	private Stack<VisionScreen> navigationController;
@@ -36,7 +38,7 @@ public class Vision extends Game {
 
 	private void initMisc() {
 		Gdx.input.setCursorCatched(true);
-		this.cards = new CardsManager(HomeCardsLoader.loadCards());
+		cards = new CardsManager(HomeCardsLoader.loadCards());
 	}
 
 	private void initAssets() {
@@ -44,10 +46,13 @@ public class Vision extends Game {
 	}
 
 	private void initServices() {
-		this.remoteServer = new RemoteServer();
-		this.remoteServer.start();
-		this.backgroundService = new BackgroundService(this);
-		this.backgroundService.start();
+		backgroundService = new BackgroundService(this);
+		backgroundService.start();
+
+		notificationService = new NotificationService(this	);
+
+		remoteServer = new RemoteServer();
+		remoteServer.start();
 	}
 
 	private void initScreens() {
