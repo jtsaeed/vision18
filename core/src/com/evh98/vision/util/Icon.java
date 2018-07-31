@@ -33,7 +33,7 @@ public class Icon {
 
     public Icon(String name) {
         this.icon256 = Graphics.createSprite("icons/" + name + "/256.png");
-        this.icon96 = Graphics.createSprite("icons/" + name + "/256.png");
+        this.icon96 = Graphics.createSprite("icons/" + name + "/96.png");
     }
 
     public Sprite getLarge() {

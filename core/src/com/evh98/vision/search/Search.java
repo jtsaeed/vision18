@@ -38,7 +38,8 @@ public class Search {
 
     public void draw(SpriteBatch spriteBatch) {
         if (displayResults) {
-            this.results.draw(spriteBatch);
+            // TODO: Check if null, if so, render some text or stn
+            results.draw(spriteBatch);
         }
 
         spriteBatch.begin();
@@ -50,15 +51,15 @@ public class Search {
 
     public void update() {
         if (displayResults) {
-            this.results.update();
+            results.update();
 
             if (Controller.confirm()) {
                 toggle();
             }
 
             if (Controller.back()) {
-                this.displayResults = false;
-                this.query = "";
+                displayResults = false;
+                query = "";
             }
         } else {
             handleQueryInput();
@@ -66,12 +67,12 @@ public class Search {
     }
 
     private void handleQueryInput() {
-        if (this.query.length() <= this.maxCharacters) {
-            this.query += Controller.textInput();
+        if (query.length() <= maxCharacters) {
+            query += Controller.textInput();
         }
 
-        if (Controller.textInputBackspace() && this.query.length() > 0) {
-            this.query = this.query.substring(0, this.query.length() - 1);
+        if (Controller.textInputBackspace() && query.length() > 0) {
+            query = query.substring(0, query.length() - 1);
         }
 
         if (Controller.textInputConfirm()) {
@@ -80,20 +81,20 @@ public class Search {
     }
 
     private void search(String query) {
-        ArrayList<Card> results = this.searchEngine.getResults(query);
+        ArrayList<Card> pulledResults = searchEngine.getResults(query);
 
-        if (results.size() > 0) {
-            this.displayResults = true;
-            this.results = new CardsManager(results);
+        if (pulledResults.size() > 0) {
+            displayResults = true;
+            results = new CardsManager(pulledResults);
         } else {
             // TODO: No results
         }
     }
 
     public void toggle() {
-        this.isActive = !this.isActive;
-        this.displayResults = false;
-        this.query = "";
+        isActive = !isActive;
+        displayResults = false;
+        query = "";
     }
 
     public boolean isActive() {

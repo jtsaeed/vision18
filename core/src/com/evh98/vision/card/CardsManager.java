@@ -18,19 +18,9 @@ public class CardsManager {
         this.cards.get(this.position).select();
     }
 
-    public CardsManager(Card...cards) {
-        this.cards = new ArrayList<Card>();
-        for (Card card : cards) {
-            this.cards.add(card);
-        }
-        Collections.sort(this.cards);
-
-        this.cards.get(this.position).select();
-    }
-
     public void draw(SpriteBatch spriteBatch) {
         for (int i = 0; i < cards.size(); i++) {
-            this.cards.get(i).draw(spriteBatch, i, position);
+            cards.get(i).draw(spriteBatch, i, position);
         }
     }
 
@@ -48,8 +38,8 @@ public class CardsManager {
     }
 
     public void addCard(Card card) {
-        this.cards.add(card);
-        Collections.sort(this.cards);
+        cards.add(card);
+        Collections.sort(cards);
     }
 
     public ArrayList<Card> getCards() {
@@ -58,21 +48,21 @@ public class CardsManager {
 
     private void moveToNextCard() {
         if (position < (cards.size() - 1)) {
-            this.cards.get(this.position).deselect();
-            this.position++;
-            this.cards.get(this.position).select();
+            cards.get(position).deselect();
+            position++;
+            cards.get(position).select();
         }
     }
 
     private void moveToPreviousCard() {
         if (position > 0) {
-            this.cards.get(this.position).deselect();
+            cards.get(position).deselect();
             position--;
-            this.cards.get(this.position).select();
+            cards.get(position).select();
         }
     }
 
     private void open() {
-        this.cards.get(this.position).open();
+        cards.get(position).open();
     }
 }

@@ -68,6 +68,10 @@ public class Controller {
         simulateKey(KeyEvent.VK_ESCAPE);
     }
 
+    public static void simulateSearch() {
+        simulateKey(KeyEvent.VK_TAB);
+    }
+
     private static void simulateKey(int key) {
         try {
             Robot robot = new Robot();

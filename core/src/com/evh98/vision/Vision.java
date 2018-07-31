@@ -4,7 +4,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.evh98.vision.card.CardsManager;
 import com.evh98.vision.notification.NotificationService;
-import com.evh98.vision.util.RemoteServer;
 import com.evh98.vision.screen.HomeScreen;
 import com.evh98.vision.screen.LockScreen;
 import com.evh98.vision.screen.TestScreen;
@@ -21,7 +20,6 @@ public class Vision extends Game {
 
 	public BackgroundService backgroundService;
 	public NotificationService notificationService;
-	private RemoteServer remoteServer;
 
 	private Stack<VisionScreen> navigationController;
 	private LockScreen lockScreen;
@@ -50,43 +48,39 @@ public class Vision extends Game {
 		backgroundService.start();
 
 		notificationService = new NotificationService(this	);
-
-		remoteServer = new RemoteServer();
-		remoteServer.start();
 	}
 
 	private void initScreens() {
-		this.navigationController = new Stack<VisionScreen>();
+		navigationController = new Stack<VisionScreen>();
 
-		this.lockScreen = new LockScreen(this);
-		this.homeScreen = new HomeScreen(this);
-		this.testScreen = new TestScreen(this);
+		lockScreen = new LockScreen(this);
+		homeScreen = new HomeScreen(this);
+		testScreen = new TestScreen(this);
 
-		this.navigationController.push(lockScreen);
-		this.navigationController.push(homeScreen);
+		navigationController.push(lockScreen);
+		navigationController.push(homeScreen);
 
-		setScreen(this.navigationController.peek());
+		setScreen(navigationController.peek());
 	}
 
 	public void lock() {
-		while (this.navigationController.size() > 1) {
+		while (navigationController.size() > 1) {
 			back();
 		}
 	}
 
 	public void back() {
-		this.navigationController.pop();
-		setScreen(this.navigationController.peek());
+		navigationController.pop();
+		setScreen(navigationController.peek());
 	}
 
 	public void goToScreen(VisionScreen screen) {
-		this.navigationController.push(screen);
-		setScreen(this.navigationController.peek());
+		navigationController.push(screen);
+		setScreen(navigationController.peek());
 	}
 
 	public void terminate() {
-		this.backgroundService.stop();
-		this.remoteServer.interrupt();
+		backgroundService.stop();
 		Gdx.app.exit();
 	}
 }

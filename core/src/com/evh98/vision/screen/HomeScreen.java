@@ -16,8 +16,9 @@ public class HomeScreen extends VisionScreen {
     public HomeScreen(Vision vision) {
         super(vision);
 
-        vision.cards.addCard(new Card("Email", Icon.browser, Palette.blues, new CardAction("app", vision.testScreen, vision)));
-        statusBar = new StatusBar(Palette.grayDark);
+        this.vision.cards.addCard(new Card("Email", Icon.browser, Palette.blues,
+                new CardAction("app", vision.testScreen, vision)));
+        this.statusBar = new StatusBar(Palette.grayDark);
     }
 
     @Override

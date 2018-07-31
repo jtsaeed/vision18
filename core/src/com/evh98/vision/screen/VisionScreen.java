@@ -74,8 +74,8 @@ public class VisionScreen implements Screen {
 
     public void drawParticles(float delta) {
         spriteBatch.begin();
-        Graphics.particles.draw(spriteBatch);
-        Graphics.particles.update(delta);
+            Graphics.particles.draw(spriteBatch);
+            Graphics.particles.update(delta);
         spriteBatch.end();
     }
 

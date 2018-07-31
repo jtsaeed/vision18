@@ -41,14 +41,13 @@ public class CardAction {
     }
 
     private void app() {
-        System.out.println(this.type);
-        vision.setScreen((VisionScreen) this.action);
+        vision.setScreen((VisionScreen) action);
     }
 
     private void program() {
         try {
             Desktop desktop = Desktop.getDesktop();
-            File file = new File((String) this.action);
+            File file = new File((String) action);
             desktop.open(file);
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,7 +56,7 @@ public class CardAction {
 
     private void web() {
         try {
-            URI uri = new URI((String) this.action);
+            URI uri = new URI((String) action);
             Desktop desktop = Desktop.getDesktop();
             desktop.browse(uri);
         } catch (URISyntaxException e) {

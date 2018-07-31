@@ -63,15 +63,15 @@ public class Card implements Comparable<Card> {
     }
 
     public void select() {
-        this.topColor = secondaryColor;
-        this.bottomColor = primaryColor;
-        this.iconColor = primaryColor;
+        topColor = secondaryColor;
+        bottomColor = primaryColor;
+        iconColor = primaryColor;
     }
 
     public void deselect() {
-        this.topColor = Palette.grayDark;
-        this.bottomColor = Palette.grayLight;
-        this.iconColor = Palette.white;
+        topColor = Palette.grayDark;
+        bottomColor = Palette.grayLight;
+        iconColor = Palette.white;
     }
 
     public String getTitle() {

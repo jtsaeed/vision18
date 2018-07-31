@@ -59,6 +59,8 @@ public class RemoteServer extends Thread {
                 break;
             case "controller back":
                 Controller.simulateBack();
+            case "controller search":
+                Controller.simulateSearch();
         }
     }
 

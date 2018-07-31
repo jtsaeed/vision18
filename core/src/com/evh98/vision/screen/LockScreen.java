@@ -40,12 +40,12 @@ public class LockScreen extends VisionScreen {
 
     private void drawScreensaver() {
         spriteBatch.begin();
-            spriteBatch.draw(this.screensaver, 0, 0);
+            spriteBatch.draw(screensaver, 0, 0);
         spriteBatch.end();
     }
 
     private void chooseRandomScreensaver() {
-        this.screensaver = Graphics.screensavers.get(new Random().nextInt(Graphics.screensavers.size()));
+        screensaver = Graphics.screensavers.get(new Random().nextInt(Graphics.screensavers.size()));
     }
 
     @Override
