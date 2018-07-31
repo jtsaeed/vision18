@@ -18,6 +18,11 @@ public class BackgroundService {
         Timer.schedule(updateTimeAndDateTask, 0, 1);
     }
 
+    public void stop() {
+        autoLockTask.cancel();
+        updateTimeAndDateTask.cancel();
+    }
+
     public void update() {
         if (Controller.anyKey()) {
             autoLockTask.cancel();

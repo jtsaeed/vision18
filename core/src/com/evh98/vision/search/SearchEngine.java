@@ -19,7 +19,7 @@ public class SearchEngine {
     public ArrayList<Card> getResults(String query) {
         ArrayList<Card> results = new ArrayList<Card>();
 
-        for (Card card : vision.homeCards) {
+        for (Card card : vision.cards.getCards()) {
             if (similarity(query, card.getTitle()) > similarityThreshold) {
                 results.add(card);
             }

@@ -52,6 +52,10 @@ public class CardsManager {
         Collections.sort(this.cards);
     }
 
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
+
     private void moveToNextCard() {
         if (position < (cards.size() - 1)) {
             this.cards.get(this.position).deselect();

@@ -11,25 +11,23 @@ import com.evh98.vision.card.HomeCardsLoader;
 
 public class HomeScreen extends VisionScreen {
 
-    private CardsManager cards;
     private StatusBar statusBar;
 
     public HomeScreen(Vision vision) {
         super(vision);
 
-        this.cards = new CardsManager(HomeCardsLoader.loadCards());
-        this.cards.addCard(new Card("Email", Icon.browser, Palette.blues, new CardAction("app", vision.testScreen, vision)));
-        this.statusBar = new StatusBar(Palette.grayDark);
+        vision.cards.addCard(new Card("Email", Icon.browser, Palette.blues, new CardAction("app", vision.testScreen, vision)));
+        statusBar = new StatusBar(Palette.grayDark);
     }
 
     @Override
     public void draw(float delta) {
-        this.cards.draw(spriteBatch);
-        this.statusBar.draw(spriteBatch);
+        vision.cards.draw(spriteBatch);
+        statusBar.draw(spriteBatch);
     }
 
     @Override
     public void update() {
-        this.cards.update();
+        vision.cards.update();
     }
 }

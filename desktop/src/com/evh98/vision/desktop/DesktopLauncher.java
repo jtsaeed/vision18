@@ -10,6 +10,8 @@ public class DesktopLauncher {
 
 		config.width = 1280;
 		config.height = 720;
+		config.backgroundFPS = 0;
+		config.vSyncEnabled = true;
 		config.fullscreen = false;
 		config.useHDPI = true;
 		config.title = "Vision";
