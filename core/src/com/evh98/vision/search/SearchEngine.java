@@ -10,17 +10,28 @@ public class SearchEngine {
 
     private final Vision vision;
 
-    private final double similarityThreshold = 0.5;
+    private final double singleSimilarityThreshold = 0.6;
+    private final double similarityThreshold = 0.4;
 
     public SearchEngine(Vision vision) {
         this.vision = vision;
+    }
+
+    public Card getSingleResult(String query) {
+        for (Card card : vision.cards.getCards()) {
+            if (similarity(query, card.getTitle().toLowerCase()) > singleSimilarityThreshold) {
+                return card;
+            }
+        }
+
+        return null;
     }
 
     public ArrayList<Card> getResults(String query) {
         ArrayList<Card> results = new ArrayList<Card>();
 
         for (Card card : vision.cards.getCards()) {
-            if (similarity(query, card.getTitle()) > similarityThreshold) {
+            if (similarity(query, card.getTitle().toLowerCase()) > similarityThreshold) {
                 results.add(card);
             }
         }

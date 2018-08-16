@@ -12,7 +12,7 @@ public class BackgroundService {
 
     public BackgroundService(Vision vision) {
         this.vision = vision;
-        this.remoteServer = new RemoteServer();
+        this.remoteServer = new RemoteServer(vision);
     }
 
     public void start() {

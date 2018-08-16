@@ -1,5 +1,8 @@
 package com.evh98.vision.util;
 
+import com.evh98.vision.Vision;
+import com.evh98.vision.card.Card;
+import com.evh98.vision.search.SearchEngine;
 import com.evh98.vision.util.Controller;
 
 import java.io.BufferedReader;
@@ -10,11 +13,15 @@ import java.net.Socket;
 
 public class RemoteServer extends Thread {
 
+    private final Vision vision;
+
     private final int port = 3000;
 
     private ServerSocket serverSocket;
 
-    public RemoteServer() {
+    public RemoteServer(Vision vision) {
+        this.vision = vision;
+
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
@@ -41,27 +48,53 @@ public class RemoteServer extends Thread {
     }
 
     private void handleRequest(String request) {
-        switch (request) {
-            case "controller up":
-                Controller.simulateUp();
+        String[] arguments = request.split(" ");
+
+        switch (arguments[0]) {
+            case "controller":
+                handleControllerRequest(arguments[1]);
                 break;
-            case "controller left":
-                Controller.simulateLeft();
+            case "shortcut":
+                handleShortcutRequest(arguments[1]);
                 break;
-            case "controller right":
-                Controller.simulateRight();
+            case "search":
+                handleSearchRequest(arguments[1]);
                 break;
-            case "controller down":
-                Controller.simulateDown();
-                break;
-            case "controller confirm":
-                Controller.simulateConfirm();
-                break;
-            case "controller back":
-                Controller.simulateBack();
-            case "controller search":
-                Controller.simulateSearch();
         }
     }
 
+    private void handleShortcutRequest(String argument) {
+        SearchEngine searchEngine = new SearchEngine(vision);
+        Card card = searchEngine.getSingleResult(argument.toLowerCase());
+
+        if (card != null) {
+            card.open();
+        }
+    }
+
+    private void handleSearchRequest(String argument) {
+        Controller.simulateSearch();
+    }
+
+    private void handleControllerRequest(String argument) {
+        switch (argument) {
+            case "up":
+                Controller.simulateUp();
+                break;
+            case "left":
+                Controller.simulateLeft();
+                break;
+            case "right":
+                Controller.simulateRight();
+                break;
+            case "down":
+                Controller.simulateDown();
+                break;
+            case "confirm":
+                Controller.simulateConfirm();
+                break;
+            case "back":
+                Controller.simulateBack();
+        }
+    }
 }
